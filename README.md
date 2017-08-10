@@ -11,12 +11,6 @@
 
 __Notes/Highlights:__ 
 
-0.The global flag flag /g will give you all the instances of the match,
-otherwise you will get only the first instance
-```
- 'aaaa'.match(/a/)  // would return only the first a
- 'aaaa'.match(/a/g) // would return all instances of a
-```
 1. If pattern does not match, it'll return a null.
 2. metacharacters:
    * x|y Pipe matches x OR y. 
@@ -35,7 +29,14 @@ otherwise you will get only the first instance
    * $& - references the whole matched string.
 3. Accepted flags/options: 
    * g (global - find all matches rather than just stopping at the first.)
-   * i (ignore case)
+   ```
+    'aaaa'.match(/a/)  // would return only the first a
+    'aaaa'.match(/a/g) // would return all instances of a
+   ```
+   * i (ignore case sensitive)
+   ```
+    "HEYthERE".match(/[a-z]/gi) // would match all letters
+   ```
    * m (multiline; match the beginning or end of each line)
    * u (unicode; treat pattern as a sequence of unicode code points)
    * y (sticky; matches only from the index indicated by the lastIndex property of this regular expression in the target string (and does      not attempt to match from any later indexes)).
