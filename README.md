@@ -4,6 +4,7 @@
 ## What is a Regular Expression?
  1. A concise way to look for patterns in strings.
  2. Creating a regular expression:  
+  "elena".match(/ele/g)  // g is for all of them
   ```
    var regex = / *Pattern goes here* / *flags go here*;
    var regex = new RegExp(/*pattern*/,*flags*); 
