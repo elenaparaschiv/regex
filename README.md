@@ -3,13 +3,20 @@
 
 ## What is a Regular Expression?
  1. A concise way to look for patterns in strings.
- 2. Creating a regular expression:  
-  "elena".match(/ele/g)  // g is for all of them
+ 2. Creating a regular expression:
   ```
    var regex = / *Pattern goes here* / *flags go here*;
    var regex = new RegExp(/*pattern*/,*flags*); 
   ```
+
 __Notes/Highlights:__ 
+
+0.The global flag flag /g will give you all the instances of the match,
+otherwise you will get only the first instance
+```
+ 'aaaa'.match(/a/)  // would return only the first a
+ 'aaaa'.match(/a/g) // would return all instances of a
+```
 1. If pattern does not match, it'll return a null.
 2. metacharacters:
    * x|y Pipe matches x OR y. 
@@ -17,7 +24,7 @@ __Notes/Highlights:__
    * \* Matches preceding expression/character zero or more times. 
    * [xyz] A 'set' or 'character set'. Matches any one of the enclosed characters or 'range' in a set - [a-z] is same as [abcdefgh...z]
      * can combine ranges in sets and ranges with individual characters in sets.
-   * [^xyz] A carat within a set matches the opposite of the enclosed range (if a-z, will match on anything except lowercase letters).
+   * [^xyz] A caret within a set matches the opposite of the enclosed range (if a-z, will match on anything except lowercase letters).
    * {} is known as a quantifier - which is used to look for consecutive matches of any length. 
      * {min, max}
      * {1,20} - 1 letter up to 20 times.
@@ -78,7 +85,7 @@ __Notes/Highlights:__
 // ''.match(/[a-zA-Z0-9]/g); -- would match all lowercase/uppercase letters or digits.
 
 // we would want the OPPOSITE.
-'aA1!@#$%^&*()-'.match(/[^a-zA-Z0-9]/g); // a carat within a set says get the opposite. - expect !@#$%^&*()- in set
+'aA1!@#$%^&*()-'.match(/[^a-zA-Z0-9]/g); // a caret within a set says get the opposite. - expect !@#$%^&*()- in set
 ```
 6. #### Get a series of consecutive letters. 
 ```
@@ -86,6 +93,11 @@ __Notes/Highlights:__
 'DONT!be*a^framework-chaser'.match(/[a-zA-Z]/g); 
 
 // we want to match consecutive characters, so we need to use quantifiers.
+'DONT!be*a^framework-chaser'.match(/[a-zA-Z]{1,20}/g); //would match letters that happen consecutively 1 to 20 times.
+// If you have a word that is more than 20 words 
+'DONT!be*a^framework-chaser'.match(/[a-zA-Z]{1,}/g); // no specific max limit for letter consecutive > 1
+ equivalent to 
+'DONT!be*a^framework-chaser'.match(/[a-zA-Z]+/g); 
 'DONT!be*a^framework-chaser'.match(/[a-zA-Z]+/g); // can also add case insensitive flag (i) ie. .match(/[a-z]+/gi)
 
 ```
