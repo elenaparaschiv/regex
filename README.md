@@ -7,7 +7,8 @@
   ```
    var regex = / *Pattern goes here* / *flags go here*;
    var regex = new RegExp(/*pattern*/,*flags*); 
-  ```
+  ``` inside
+Below
 
 __Notes/Highlights:__ 
 
